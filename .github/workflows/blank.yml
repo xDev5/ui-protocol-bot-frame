@@ -1,0 +1,484 @@
+ ### Comprehensive Framework Document for Replication
+
+---
+
+#### **Framework Overview**
+
+This document outlines the comprehensive structure, protocols, and technical specifications necessary to replicate the current state of the UI framework into a reusable, generalized framework. All specific details have been converted into variables for general application.
+
+---
+
+### 1. **HTML Structure**
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ TITLE }}</title>
+  <link rel="stylesheet" href="{{ STYLESHEET_URL }}">
+  <link href="{{ FONT_URL }}" rel="stylesheet">
+</head>
+<body>
+  <div class="{{ UI_CONTAINER_CLASS }}">
+    <header>
+      <div class="{{ BRAND_AREA_CLASS }}">{{ BRAND_NAME }}</div>
+      <nav class="{{ NAVIGATION_TABS_CLASS }}">
+        <a href="#">{{ HOME_LINK_TEXT }}</a>
+        <a href="#">{{ ABOUT_LINK_TEXT }}</a>
+        <a href="#">{{ SERVICES_LINK_TEXT }}</a>
+        <a href="#">{{ CONTACT_LINK_TEXT }}</a>
+        <a href="#" class="{{ SETTINGS_ICON_CLASS }}"><i class="{{ SETTINGS_ICON_FONT }}"></i></a>
+      </nav>
+    </header>
+    <main>
+      <div class="{{ CHAT_HISTORY_CLASS }}">
+        <!-- Chat history content will be dynamically added here -->
+      </div>
+      <div class="{{ INPUT_BOX_CLASS }}">
+        <select id="{{ MODEL_SELECT_ID }}" class="{{ AI_MODEL_SELECT_CLASS }}">
+          <option value="{{ MODEL_OPTION_1_VALUE }}">{{ MODEL_OPTION_1_TEXT }}</option>
+          <option value="{{ MODEL_OPTION_2_VALUE }}">{{ MODEL_OPTION_2_TEXT }}</option>
+        </select>
+        <div class="{{ TEXT_BOX_CONTAINER_CLASS }}">
+          <input type="text" class="{{ TEXT_WITH_DOT_CLASS }}" placeholder="{{ TEXT_PLACEHOLDER }}" id="{{ TEXT_INPUT_ID }}" />
+          <div class="{{ MENU_POPUP_CLASS }}" id="{{ MENU_POPUP_ID }}">
+            <div onclick="{{ COPY_PROMPT_FUNC_1 }}">Prompt 1</div>
+            <div onclick="{{ COPY_PROMPT_FUNC_2 }}">Prompt 2</div>
+            <!-- other prompts here -->
+          </div>
+        </div>
+        <button onclick="{{ SEND_MESSAGE_FUNC }}" class="{{ SEND_BTN_CLASS }}"><i class="{{ SEND_BTN_ICON_FONT }}"></i> {{ SEND_BTN_TEXT }}</button>
+      </div>
+    </main>
+    <aside>
+      <div class="{{ ASK_THE_WEB_CLASS }}">{{ ASK_THE_WEB_TEXT }}</div>
+      <div class="{{ MY_OWN_PROMPTS_CLASS }}">{{ MY_OWN_PROMPTS_TEXT }}</div>
+      <div class="{{ CHAT_WITH_CLASS }}">
+        <div>{{ IMMERSIVE_CHAT_TEXT }}</div>
+        <div>{{ PDF_CHAT_TEXT }}</div>
+        <div>{{ IMAGE_CHAT_TEXT }}</div>
+        <div>{{ SCREENSHOT_CHAT_TEXT }}</div>
+      </div>
+      <div class="{{ PROMPT_LIBRARY_CLASS }}">{{ PROMPT_LIBRARY_TEXT }}</div>
+      <div class="{{ NAVIGATION_SETTINGS_CLASS }}">
+        <div>{{ REWARDS_TEXT }}</div>
+        <div>{{ CHAT_HISTORY_TEXT }}</div>
+        <div>{{ SUMMARY_TEXT }}</div>
+        <div>{{ SEARCH_TEXT }}</div>
+        <div>{{ ART_TEXT }}</div>
+        <div>{{ IMMERSIVE_CHAT_TEXT }}</div>
+        <div>{{ SETTINGS_TEXT }}</div>
+      </div>
+      <div class="{{ VERSION_INFO_CLASS }}">{{ VERSION_INFO_TEXT }}</div>
+    </aside>
+    <footer>
+      <p>{{ FOOTER_TEXT }}</p>
+    </footer>
+  </div>
+
+  <script src="{{ SCRIPT_URL }}"></script>
+</body>
+</html>
+```
+
+### 2. **CSS Styling**
+
+```css
+@import url('{{ FONT_AWESOME_URL }}');
+
+body {
+  font-family: '{{ FONT_FAMILY }}', sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  height: 100vh;
+  background: {{ BACKGROUND_GRADIENT }};
+  overflow: hidden;
+}
+
+.{{ UI_CONTAINER_CLASS }} {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: {{ HEADER_BG_COLOR }};
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  animation: slide-down 0.5s ease-out;
+}
+
+@keyframes slide-down {
+  from { transform: translateY(-100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.{{ BRAND_AREA_CLASS }} {
+  font-size: 28px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.{{ NAVIGATION_TABS_CLASS }} {
+  display: flex;
+  gap: 20px;
+}
+
+.{{ NAVIGATION_TABS_CLASS }} a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  padding: 10px;
+  transition: color 0.3s;
+}
+
+.{{ NAVIGATION_TABS_CLASS }} a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  display: block;
+  margin-top: 5px;
+  right: 0;
+  background: {{ NAV_LINK_HOVER_COLOR }};
+  transition: width 0.3s ease;
+}
+
+.{{ NAVIGATION_TABS_CLASS }} a:hover {
+  color: {{ NAV_LINK_HOVER_TEXT_COLOR }};
+}
+
+.{{ NAVIGATION_TABS_CLASS }} a:hover::after {
+  width: 100%;
+  left: 0;
+  background-color: {{ NAV_LINK_HOVER_COLOR }};
+}
+
+.{{ SETTINGS_ICON_CLASS }} {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 20px;
+  background-color: {{ MAIN_BG_COLOR }};
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin: 20px;
+  animation: fade-in 0.5s ease-out;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.{{ CHAT_HISTORY_CLASS }} {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: {{ CHAT_HISTORY_BG_COLOR }};
+  border-radius: 16px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.{{ CHAT_HISTORY_CLASS }}::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(to right, {{ CHAT_HISTORY_GRADIENT_START }}, {{ CHAT_HISTORY_GRADIENT_END }});
+  animation: progress-bar 5s linear infinite;
+}
+
+@keyframes progress-bar {
+  0% { left: -100%; right: 100%; }
+  50% { left: 0; right: 0; }
+  100% { left: 100%; right: -100%; }
+}
+
+.{{ INPUT_BOX_CLASS }} {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: {{ INPUT_BOX_BG_COLOR }};
+  border-radius: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.{{ AI_MODEL_SELECT_CLASS }} {
+  margin-right: 10px;
+  padding: 10px;
+  border-radius: 16px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  background-color: {{ AI_MODEL_SELECT_BG_COLOR }};
+  color: white;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.{{ AI_MODEL_SELECT_CLASS }}:hover {
+  background-color: {{ AI_MODEL_SELECT_HOVER_BG_COLOR }};
+}
+
+.{{ TEXT_BOX_CONTAINER_CLASS }} {
+  position: relative;
+  flex-grow: 1;
+}
+
+.{{ TEXT_WITH_DOT_CLASS }} {
+  width: 100%;
+  padding: 10px 10px 10px 30px;
+  border-radius: 16px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  transition: border-color 0.3s, background-color 0.3s;
+}
+
+.{{ TEXT_WITH_DOT_CLASS }}:focus {
+  border-color: {{ TEXT_WITH_DOT_FOCUS_BD_COLOR }};
+  background-color: {{ TEXT_WITH_DOT_FOCUS_BG_COLOR }};
+  color: white;
+}
+
+.{{ TEXT_WITH_DOT_CLASS }}::before {
+  content: '•';
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: grey;
+}
+
+.{{ MENU_POPUP_CLASS }} {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+  border-radius: 16px;
+  width: 100%;
+}
+
+.{{ TEXT_WITH_DOT_CLASS }}:focus + .{{ MENU_POPUP_CLASS }} {
+  display: block;
+  animation: popup-slide 0.3s ease-out;
+}
+
+@keyframes popup-slide {
+  from { transform: translateY(-10%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.{{ MENU_POPUP_CLASS }} div {
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.{{ MENU_POPUP_CLASS }} div:hover {
+  background-color: #f0f0f0;
+}
+
+.{{ SEND_BTN_CLASS }} {
+  margin-left: 10px;
+  padding: 10px 20px;
+  background-color: {{ SEND_BTN_BG_COLOR }};
+  color: white;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.{{ SEND_BTN_CLASS }} i {
+  margin-right: 10px;
+}
+
+.{{ SEND_BTN_CLASS }}:hover {
+  background-color: {{ SEND_BTN_HOVER_BG_COLOR }};
+  transform: scale(1.1);
+}
+
+aside {
+  width: 300px;
+  padding: 20px;
+  background-color: {{ ASIDE_BG_COLOR }};
+  overflow-y: auto;
+  border-left: 1px solid #ccc;
+  animation: slide-right 0.5s ease-out;
+}
+
+@keyframes slide-right {
+  from { transform: translateX(-100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+.{{ ASK_THE_WEB_CLASS }}, .{{ MY_OWN_PROMPTS_CLASS }}, .{{ CHAT_WITH_CLASS }}, .{{ PROMPT_LIBRARY_CLASS }}, .{{ NAVIGATION_SETTINGS_CLASS }} {
+  margin-bottom: 20px;
+  padding: 15px;
+  background: {{ WIDGET_BG_COLOR }};
+  border-radius: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.2s, background 0.3s;
+}
+
+.{{ ASK_THE_WEB_CLASS }}:hover, .{{ MY_OWN_PROMPTS_CLASS }}:hover, .{{ CHAT_WITH_CLASS }}:hover, .{{ PROMPT_LIBRARY_CLASS }}:hover, .{{ NAVIGATION_SETTINGS_CLASS }}:hover {
+  transform: scale(1.05);
+  background: {{ WIDGET_HOVER_BG_COLOR }};
+  color: white;
+}
+
+.{{ VERSION_INFO_CLASS }} {
+  text-align: center;
+  margin-top: 20px;
+  color: #888;
+}
+
+footer {
+  padding: 20px;
+  background-color: {{ FOOTER_BG_COLOR }};
+  color: white;
+  text-align: center;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
+  animation: fade-in-footer 0.5s ease-out;
+}
+
+@keyframes fade-in-footer {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+```
+
+### 3. **JavaScript Functionality**
+
+```javascript
+function copyToClipboard(content) {
+  navigator.clipboard.writeText(content).then(() => {
+    alert('Copied to clipboard!');
+  }).catch(err => {
+    console.error('Failed to copy text: ', err);
+  });
+}
+
+function sendMessage() {
+  const textInput = document.getElementById('{{ TEXT_INPUT_ID }}');
+  const message = textInput.value.trim();
+  if (message) {
+    const chatHistory = document.querySelector('.{{ CHAT_HISTORY_CLASS }}');
+    const newMessage = document.createElement('div');
+    newMessage.textContent = message;
+    newMessage.classList.add('chat-message');
+    chatHistory.appendChild(newMessage);
+    
+    chatHistory.scrollTop = chatHistory.scrollHeight;
+    textInput.value = '';
+  }
+}
+
+document.getElementById('{{ TEXT_INPUT_ID }}').addEventListener('focus', function() {
+  const menuPopup = document.getElementById('{{ MENU_POPUP_ID }}');
+  menuPopup.style.display = 'block';
+});
+
+document.getElementById('{{ TEXT_INPUT_ID }}').addEventListener('blur', function() {
+  const menuPopup = document.getElementById('{{ MENU_POPUP_ID }}');
+  setTimeout(() => menuPopup.style.display = 'none', 200);
+});
+```
+
+---
+
+### **Critical Contextual Variables**
+
+- **TITLE**: The title of the webpage.
+- **STYLESHEET_URL**: URL to the main stylesheet.
+- **FONT_URL**: URL to the Google font or any other font service.
+- **UI_CONTAINER_CLASS**: The main container class name.
+- **BRAND_AREA_CLASS**: The class for the brand/logo area.
+- **BRAND_NAME**: The name of the brand or logo text.
+- **NAVIGATION_TABS_CLASS**: The class for the navigation tabs.
+- **HOME_LINK_TEXT**: Text for the "Home" navigation link.
+- **ABOUT_LINK_TEXT**: Text for the "About" navigation link.
+- **SERVICES_LINK_TEXT**: Text for the "Services" navigation link.
+- **CONTACT_LINK_TEXT**: Text for the "Contact" navigation link.
+- **SETTINGS_ICON_CLASS**: The class for the settings icon.
+- **SETTINGS_ICON_FONT**: Font Awesome class for the settings icon.
+- **CHAT_HISTORY_CLASS**: The class for the chat history section.
+- **INPUT_BOX_CLASS**: The class for the input box section.
+- **MODEL_SELECT_ID**: ID for the model select dropdown.
+- **AI_MODEL_SELECT_CLASS**: The class for the model select dropdown.
+- **MODEL_OPTION_1_VALUE**: Value for the first model option.
+- **MODEL_OPTION_1_TEXT**: Text for the first model option.
+- **MODEL_OPTION_2_VALUE**: Value for the second model option.
+- **MODEL_OPTION_2_TEXT**: Text for the second model option.
+- **TEXT_BOX_CONTAINER_CLASS**: The class for the text box container.
+- **TEXT_WITH_DOT_CLASS**: The class for the text input with a dot.
+- **TEXT_PLACEHOLDER**: Placeholder text for the text input.
+- **TEXT_INPUT_ID**: ID for the text input.
+- **MENU_POPUP_CLASS**: The class for the menu popup.
+- **MENU_POPUP_ID**: ID for the menu popup.
+- **COPY_PROMPT_FUNC_1**: JavaScript function to copy the first prompt.
+- **COPY_PROMPT_FUNC_2**: JavaScript function to copy the second prompt.
+- **SEND_MESSAGE_FUNC**: JavaScript function to send the message.
+- **SEND_BTN_CLASS**: The class for the send button.
+- **SEND_BTN_ICON_FONT**: Font Awesome class for the send button icon.
+- **SEND_BTN_TEXT**: Text for the send button.
+- **ASK_THE_WEB_CLASS**: The class for the "Ask the Web" section.
+- **ASK_THE_WEB_TEXT**: Text for the "Ask the Web" section.
+- **MY_OWN_PROMPTS_CLASS**: The class for the "My Own Prompts" section.
+- **MY_OWN_PROMPTS_TEXT**: Text for the "My Own Prompts" section.
+- **CHAT_WITH_CLASS**: The class for the "Chat With" section.
+- **IMMERSIVE_CHAT_TEXT**: Text for the "Immersive Chat" section.
+- **PDF_CHAT_TEXT**: Text for the "PDF Chat" section.
+- **IMAGE_CHAT_TEXT**: Text for the "Image Chat" section.
+- **SCREENSHOT_CHAT_TEXT**: Text for the "Screenshot Chat" section.
+- **PROMPT_LIBRARY_CLASS**: The class for the "Prompt Library" section.
+- **PROMPT_LIBRARY_TEXT**: Text for the "Prompt Library" section.
+- **NAVIGATION_SETTINGS_CLASS**: The class for the navigation settings section.
+- **REWARDS_TEXT**: Text for the "Rewards" section.
+- **CHAT_HISTORY_TEXT**: Text for the "Chat History" section.
+- **SUMMARY_TEXT**: Text for the "Summary" section.
+- **SEARCH_TEXT**: Text for the "Search" section.
+- **ART_TEXT**: Text for the "Art" section.
+- **SETTINGS_TEXT**: Text for the "Settings" section.
+- **VERSION_INFO_CLASS**: The class for the version information section.
+- **VERSION_INFO_TEXT**: Text for the version information section.
+- **FOOTER_TEXT**: Text for the footer section.
+- **SCRIPT_URL**: URL to the main JavaScript file.
+- **FONT_FAMILY**: Font family for the body text.
+- **BACKGROUND_GRADIENT**: Background gradient for the body.
+- **HEADER_BG_COLOR**: Background color for the header.
+- **NAV_LINK_HOVER_COLOR**: Hover color for navigation links.
+- **NAV_LINK_HOVER_TEXT_COLOR**: Hover text color for navigation links.
+- **MAIN_BG_COLOR**: Background color for the main section.
+- **CHAT_HISTORY_BG_COLOR**: Background color for the chat history section.
+- **CHAT_HISTORY_GRADIENT_START**: Gradient start color for the chat history progress bar.
+- **CHAT_HISTORY_GRADIENT_END**: Gradient end color for the chat history progress bar.
+- **INPUT_BOX_BG_COLOR**: Background color for the input box section.
